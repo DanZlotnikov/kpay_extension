@@ -1,0 +1,52 @@
+ {
+    "name": "K-Pay",
+    "version": "1.2",
+    "description": "Crypto made smooth",
+    "permissions": ["activeTab", "declarativeContent", "storage"],
+    "background": {
+      "scripts": ["background.js"],
+      "persistent": false
+    },
+	"web_accessible_resources": [
+		"images/*.png"
+	],
+    "page_action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "images/get_started16.png",
+        "32": "images/get_started32.png",
+        "48": "images/get_started48.png",
+        "128": "images/get_started128.png"
+      }
+    },
+    "icons": {
+      "16": "images/get_started16.png",
+      "32": "images/get_started32.png",
+      "48": "images/get_started48.png",
+      "128": "images/get_started128.png"
+    },
+    "content_scripts": [
+      {
+        "matches": [
+          "https://myetherwallet.com/*",
+          "https://www.myetherwallet.com/*"
+        ],
+        "js": [
+          "content.js"
+        ],
+        "run_at": "document_end"
+      },
+      {
+        "matches": [
+          "https://coinbase.com/*",
+          "https://www.coinbase.com/*"
+        ],
+        "js": [
+          "content-coinbase.js"
+        ],
+        "run_at": "document_end"
+      }
+    ],
+    
+    "manifest_version": 2
+  }
